@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Maintain_Student_Scores
 {
-	public partial class frmStudentScores : Form
+	public partial class frmAddScore : Form
 	{
-		public frmStudentScores()
+		public frmAddScore()
 		{
 			InitializeComponent();
 		}

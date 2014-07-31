@@ -44,16 +44,52 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="frmAddScore.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="frmAddScore.Designer.cs">
+      <DependentUpon>frmAddScore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmNewStudent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNewStudent.Designer.cs">
+      <DependentUpon>frmNewStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmStudentScores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmStudentScores.Designer.cs">
+      <DependentUpon>frmStudentScores.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUpdateScore.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUpdateScore.Designer.cs">
+      <DependentUpon>frmUpdateScore.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUpdateScores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUpdateScores.Designer.cs">
+      <DependentUpon>frmUpdateScores.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="frmAddScore.resx">
+      <DependentUpon>frmAddScore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmNewStudent.resx">
+      <DependentUpon>frmNewStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmStudentScores.resx">
+      <DependentUpon>frmStudentScores.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUpdateScore.resx">
+      <DependentUpon>frmUpdateScore.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUpdateScores.resx">
+      <DependentUpon>frmUpdateScores.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

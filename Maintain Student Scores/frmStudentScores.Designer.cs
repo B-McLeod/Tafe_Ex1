@@ -51,6 +51,7 @@
 			this.btnExit.TabIndex = 5;
 			this.btnExit.Text = "E&xit";
 			this.btnExit.UseVisualStyleBackColor = true;
+			this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
 			// 
 			// btnDelete
 			// 
@@ -69,6 +70,7 @@
 			this.btnUpdate.TabIndex = 3;
 			this.btnUpdate.Text = "Update...";
 			this.btnUpdate.UseVisualStyleBackColor = true;
+			this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
 			// 
 			// btnAddNew
 			// 
@@ -78,6 +80,7 @@
 			this.btnAddNew.TabIndex = 2;
 			this.btnAddNew.Text = "Add New...";
 			this.btnAddNew.UseVisualStyleBackColor = true;
+			this.btnAddNew.Click += new System.EventHandler(this.btnAddNew_Click);
 			// 
 			// lstMain
 			// 
@@ -173,8 +176,10 @@
 			this.Controls.Add(this.btnUpdate);
 			this.Controls.Add(this.btnDelete);
 			this.Controls.Add(this.btnExit);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
 			this.Name = "frmStudentScores";
+			this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Student Scores";
 			this.ResumeLayout(false);
