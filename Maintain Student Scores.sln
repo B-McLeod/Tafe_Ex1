@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Maintain Student Scores", "Maintain Student Scores\Maintain Student Scores.csproj", "{BA9E9940-F674-48C5-ADE4-AB504192916A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BA9E9940-F674-48C5-ADE4-AB504192916A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA9E9940-F674-48C5-ADE4-AB504192916A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA9E9940-F674-48C5-ADE4-AB504192916A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA9E9940-F674-48C5-ADE4-AB504192916A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
