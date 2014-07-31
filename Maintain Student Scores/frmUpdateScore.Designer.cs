@@ -87,6 +87,7 @@
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "frmUpdateScore";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Update Score";
 			this.ResumeLayout(false);
 			this.PerformLayout();
