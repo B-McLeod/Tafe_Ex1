@@ -12,9 +12,12 @@ namespace Maintain_Student_Scores
 {
 	public partial class frmStudentScores : Form
 	{
+		List<Student> studentList;
+
 		public frmStudentScores()
 		{
 			InitializeComponent();
+			studentList = new List<Student>();
 		}
 		
 		/* Close the application */
@@ -26,7 +29,7 @@ namespace Maintain_Student_Scores
 		/* Open 'New Student' dialog box */
 		private void btnAddNew_Click(object sender, EventArgs e)
 		{
-			Form formNewStudent = new frmNewStudent();
+			Form formNewStudent = new frmNewStudent(studentList);
 			formNewStudent.ShowDialog();
 		}
 
@@ -34,6 +37,11 @@ namespace Maintain_Student_Scores
 		{
 			Form formUpdateScores = new frmUpdateScores();
 			formUpdateScores.ShowDialog();
+		}
+
+		private void lstMain_SelectedIndexChanged(object sender, EventArgs e)
+		{
+
 		}
 
 
