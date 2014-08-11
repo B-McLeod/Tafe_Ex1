@@ -38,12 +38,5 @@ namespace Maintain_Student_Scores
 			Form formUpdateScores = new frmUpdateScores();
 			formUpdateScores.ShowDialog();
 		}
-
-		private void lstMain_SelectedIndexChanged(object sender, EventArgs e)
-		{
-
-		}
-
-
 	}
 }

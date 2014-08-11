@@ -89,7 +89,6 @@
 			this.lstMain.Name = "lstMain";
 			this.lstMain.Size = new System.Drawing.Size(247, 134);
 			this.lstMain.TabIndex = 1;
-			this.lstMain.SelectedIndexChanged += new System.EventHandler(this.lstMain_SelectedIndexChanged);
 			// 
 			// lblStudents
 			// 

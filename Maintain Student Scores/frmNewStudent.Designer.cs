@@ -81,6 +81,7 @@
 			this.txtScores.ReadOnly = true;
 			this.txtScores.Size = new System.Drawing.Size(195, 20);
 			this.txtScores.TabIndex = 0;
+			this.txtScores.TabStop = false;
 			// 
 			// lblScores
 			// 
@@ -107,17 +108,17 @@
 			this.btnClearScores.Location = new System.Drawing.Point(176, 94);
 			this.btnClearScores.Name = "btnClearScores";
 			this.btnClearScores.Size = new System.Drawing.Size(75, 23);
-			this.btnClearScores.TabIndex = 0;
-			this.btnClearScores.TabStop = false;
+			this.btnClearScores.TabIndex = 4;
 			this.btnClearScores.Text = "Clear Scores";
 			this.btnClearScores.UseVisualStyleBackColor = true;
+			this.btnClearScores.Click += new System.EventHandler(this.btnClearScores_Click);
 			// 
 			// btnOK
 			// 
 			this.btnOK.Location = new System.Drawing.Point(95, 137);
 			this.btnOK.Name = "btnOK";
 			this.btnOK.Size = new System.Drawing.Size(75, 23);
-			this.btnOK.TabIndex = 4;
+			this.btnOK.TabIndex = 5;
 			this.btnOK.Text = "OK";
 			this.btnOK.UseVisualStyleBackColor = true;
 			this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -128,13 +129,13 @@
 			this.btnCancel.Location = new System.Drawing.Point(176, 137);
 			this.btnCancel.Name = "btnCancel";
 			this.btnCancel.Size = new System.Drawing.Size(75, 23);
-			this.btnCancel.TabIndex = 5;
+			this.btnCancel.TabIndex = 6;
 			this.btnCancel.Text = "Cancel";
 			this.btnCancel.UseVisualStyleBackColor = true;
 			// 
 			// frmNewStudent
 			// 
-			this.AcceptButton = this.btnOK;
+			this.AcceptButton = this.btnAddScore;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.btnCancel;

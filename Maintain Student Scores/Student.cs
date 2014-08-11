@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Maintain_Student_Scores
 {
-	class Student
+	public class Student
 	{
 		public String Name { get; set; }
 		public List<int> Scores { get; set; }

@@ -10,15 +10,15 @@ using System.Windows.Forms;
 
 namespace Maintain_Student_Scores
 {
-	public partial class frmNewStudent : Form
+	public partial class 
+		frmNewStudent : Form
 	{
 		List<Student> newStudentList;
-		List<int> newScores;
+		List<int> newScores = new List<int>();
 
 		public frmNewStudent()
 		{
 			InitializeComponent();
-			
 		}
 
 		public frmNewStudent(List<Student> mainStudentList)
@@ -29,35 +29,54 @@ namespace Maintain_Student_Scores
 
 		private void btnOK_Click(object sender, EventArgs e)
 		{
-			String newName = txtName.Text;
-			Student person = new Student(newName, newScores);
+			if (newScores.Count >= 1)
+			{
+				String newName = txtName.Text;
+				/* Sort out multiple Student list only 1 instance created */
+				Student person = new Student(newName, newScores);
+				this.Close();
+			}
+			else
+			{
+				MessageBox.Show("No scores have been entered for this student", "Enter score");
+			}
 		}
 
 		private void btnAddScore_Click(object sender, EventArgs e)
 		{
-			int score = Convert.ToInt32(txtScore.Text);
-			newScores.Add(score);
-
-			txtScores.Text = "Bum";
-		}
-
-		public static string Concatenate<T>(this IEnumerable<T> source, string delimiter)
-		{
-			var s = new StringBuilder();
-			bool first = true;
-			foreach (T t in source)
+			try
 			{
-				if (first)
+				int score = Convert.ToInt32(txtScore.Text);
+
+				if (score >= 0 && score <= 100)
 				{
-					first = false;
+					newScores.Add(score);
+					txtScore.Clear();
+					txtScore.Focus();
 				}
 				else
 				{
-					s.Append(delimiter);
+					MessageBox.Show("Please enter a score between 0 and 100.", "Invalid score");
 				}
-				s.Append(t);
 			}
-			return s.ToString();
+			catch (FormatException)
+			{
+				MessageBox.Show("Please enter a valid number", "Invalid Entry");
+			}
+
+			String printList = null;
+			foreach (Int32 x in newScores)
+			{
+				printList += x.ToString() + ", ";
+			}
+
+			txtScores.Text = printList;
+		}
+
+		private void btnClearScores_Click(object sender, EventArgs e)
+		{
+			newScores.Clear();
+			txtScores.Text = null;
 		}
 	}
 }
