@@ -7,10 +7,10 @@ namespace Maintain_Student_Scores
 	public class Student
 	{
 		/* Variables */
-		private String Name { get; set; }
-		private ArrayList Scores;
+		private String Name;
+		private List<int> Scores;
 
-		/* Default Constructor */
+		///* Default Constructor */
 		public Student()
 		{
 			Name = null;
@@ -18,60 +18,33 @@ namespace Maintain_Student_Scores
 		}
 
 		/* Overloaded Constructor */
-		public Student(string name, ArrayList scores)
+		public Student(string name, List<int> scores)
 		{
 			this.Name = name;
 			this.Scores = scores;
 		}
 
-		
-		/* Methods */
+		/* Setters and Getters */
+		public String getName()
+		{
+			return this.Name;
+		}
 
-		public ArrayList getScores()
+		public void setName(string Name)
+		{
+			this.Name = Name;
+		}
+
+		public List<int> getScores()
 		{
 			return this.Scores;
 		}
 
-		public int scoreTotal()
+		public void setScores(List<int> Scores)
 		{
-			int temp = 0;
-			foreach (int i in Scores)
-			{
-				temp += i;
-			}
-			return temp;
+			this.Scores = Scores;
 		}
-
-		public int scoreCount()
-		{
-			return Scores.ToArray().Length;
-		}
-
-		public double scoreAverage()
-		{
-			int tempTotal;
-			int tempCount;
-			tempTotal = scoreTotal();
-			tempCount = scoreTotal();
-			return (tempTotal / tempCount);
-		}
-
-		public void setAllScores(ArrayList s)
-		{
-			this.Scores = s;
-		}
-
-		public void setScore(int i, int score)
-		{
-			this.Scores.RemoveAt(i);
-			this.Scores.Insert(i, score);
-		}
-
-		public void addScore(int score)
-		{
-			this.Scores.Add(score);
-		}
-
+		
 		public Student getStudent()
 		{
 			return this;
@@ -79,18 +52,51 @@ namespace Maintain_Student_Scores
 
 		/* ---- Helper Methods ---- */
 
-		/* List To String */
-		public String printList(List<int> lst)
+		/* List.ToString */
+		public String printList(List<int> list)
 		{
 			String strList = null;
-			foreach (int var in lst)
+			foreach (int s in list)
 			{
-				strList += var + ", ";
+				strList += s + ", ";
 			}
 			strList = strList.Remove(strList.Length - 2);
 			return strList;			
 		}
 
+		/* Student.ToString */
+		public String printStudent()
+		{
+			String strStudent = null;
+			String x = getName();
+			String y = null;
 
+			foreach (int i in Scores)
+			{
+				y += ", " + i;
+			}
+
+			strStudent = x + " - " + y.Remove(0, 2);
+			return strStudent;
+		}
+
+		/* -- Score Methods -- */
+
+		/* Total Score */
+		private int totalScore(List<int> lstScr)
+		{
+			int total = 0;
+
+			foreach(int i in lstScr)
+			{
+				total += i;
+			}
+
+			return total;
+		}
+
+		/* Count Score */
+
+		/* Average Score */
 	}
 }

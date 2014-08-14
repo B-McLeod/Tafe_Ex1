@@ -13,9 +13,8 @@ namespace Maintain_Student_Scores
 	public partial class 
 		frmNewStudent : Form
 	{
-		private List<Student> addStudentList;
-			private String newName;
-			private List<int> newScores;
+		private List<Student> studentList;
+		private List<int> newStudentScores = new List<int>();
 			
 		/* Default Initializer */
 		public frmNewStudent()
@@ -23,21 +22,20 @@ namespace Maintain_Student_Scores
 			InitializeComponent();
 		}
 
-		/* Overloaded Initializer */
+		///* Overloaded Initializer */
 		public frmNewStudent(List<Student> allStudents)
 		{
-			addStudentList = allStudents;
+			studentList = allStudents;
 			InitializeComponent();
 		}
 
 		/* OK Button */
 		private void btnOK_Click(object sender, EventArgs e)
 		{
-			if (newScores.Count >= 1)
+			if (newStudentScores.Count > 0)
 			{
-				String newName = txtName.Text;
-				/* Sort out multiple Student list only 1 instance created */
-				Student person = new Student(newName, newScores);
+				Student newStudent = new Student(txtName.Text, newStudentScores);
+				studentList.Add(newStudent);
 				this.Close();
 			}
 			else
@@ -51,11 +49,16 @@ namespace Maintain_Student_Scores
 		{
 			try
 			{
-				int score = Convert.ToInt32(txtScore.Text);
+				//String input = this.txtScore.Text;
+				//int value;
+				//int.TryParse(input, out value);
 
-				if (score >= 0 && score <= 100)
+				int value = Convert.ToInt32(txtScore.Text);
+
+				if (validScore(value))
 				{
-					newScores.Add(score);
+					newStudentScores.Add(value);
+					txtScores.Text = printList(newStudentScores);
 					txtScore.Clear();
 					txtScore.Focus();
 				}
@@ -68,16 +71,12 @@ namespace Maintain_Student_Scores
 			{
 				MessageBox.Show("Please enter a valid number", "Invalid Entry");
 			}
-
-			printList(newScores);
-
-			txtScores.Text = printList;
 		}
 
 		/* Clear Scores Button */
 		private void btnClearScores_Click(object sender, EventArgs e)
 		{
-			newScores.Clear();
+			newStudentScores.Clear();
 			txtScores.Text = null;
 		}
 
@@ -85,6 +84,26 @@ namespace Maintain_Student_Scores
 		private void btnCancel_Click(object sender, EventArgs e)
 		{
 			this.Close();
+		}
+
+		/* ---- Helper Methods ---- */
+
+		/* Score Validation Methods */
+		private bool validScore(int s)
+		{
+			return (s >= 0 && s <= 100);
+		}
+
+		/* List.ToString */
+		public String printList(List<int> list)
+		{
+			String strList = null;
+			foreach (int s in list)
+			{
+				strList += s + ", ";
+			}
+			strList = strList.Remove(strList.Length - 2);
+			return strList;
 		}
 	}
 }

@@ -18,14 +18,9 @@ namespace Maintain_Student_Scores
 		public frmStudentScores()
 		{
 			InitializeComponent();
-		}
-
-		/* Overloaded Initializer */
-		private void frmStudentScores(object sender, EventArgs e)
-		{
 			allStudents = new List<Student>();
 		}
-		
+				
 		/* Open 'New Student' dialog box */
 		private void btnAddNew_Click(object sender, EventArgs e)
 		{
@@ -49,38 +44,50 @@ namespace Maintain_Student_Scores
 		/* Update listbox when screen is activated */
 		private void frmStudentScores_Activated(object sender, EventArgs e)
 		{
-			lstMain.Items.Clear();
+			allStudents = testStudentList();
+			this.lstMain.Items.Clear();
 			foreach (Student s in allStudents)
 			{
-				lstMain.Items.Add(s);
+				this.lstMain.Items.Add(s.printStudent());
 			}
 		}
 
-		///* Helpers */
-		//private ArrayList popDefaultList();
-		//{
-		//	ArrayList studentList = new ArrayList();
-		//	Student default1 = new Student();
-		//	Student default2 = new Student();
-		//	Student default3 = new Student();
-		//	ArrayList tempScores = new ArrayList { 97, 71, 83 };
+		/* Test Data */
+		private List<Student> testStudentList()
+		{
+			List<Student> studentList = new List<Student>();
 
-		//	default1.setName("Blake McLeod");
-		//	default1.setAllScores(tempScores);
+			// Student - Robin Williams (Rest in peace)
+			Student CaptainMyCaptain = new Student();
+			CaptainMyCaptain.setName("Robin Williams");
+			List<int> student1scores = new List<int> { 100, 100, 100 };
+			CaptainMyCaptain.setScores(student1scores);
+			studentList.Add(CaptainMyCaptain);
 
-		//	default2.setName("James Bond");
-		//	tempScores = new ArrayList { 0, 0, 7 };
-		//	default2.setAllScores(tempScores);
+			// Student - James Bond
+			Student student2 = new Student();
+			student2.setName("James Bond");
+			List<int> student2scores = new List<int> { 0, 0, 7 };
+			student2.setScores(student2scores);
+			studentList.Add(student2);
 
-		//	default3.setName("Robin Williams");
-		//	tempScores = new ArrayList { 100, 100, 100 };
-		//	default3.setAllScores(tempScores);
+			// Student - Blake McLeod
+			Student student3 = new Student();
+			student3.setName("Blake McLeod");
+			List<int> student3scores = new List<int> { 87, 96, 98 };
+			student3.setScores(student3scores);
+			studentList.Add(student3);
+			
+			return studentList;
+		}
 
-		//	studentList.Add(default1);
-		//	studentList.Add(default2);
-		//	studentList.Add(default3);
+		private void lstMain_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			// WORKING ON GETTING THE TOTAL, COUNT AND AVERAGE VALUES TO DISPLAY WHEN SELECTED LIST ITEM HAS CHANGED.
+		}
 
-		//	return studentList;
-		//}
+
+
+
 	}
 }
