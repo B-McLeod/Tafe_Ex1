@@ -13,20 +13,24 @@ namespace Maintain_Student_Scores
 	public partial class 
 		frmNewStudent : Form
 	{
-		List<Student> newStudentList;
-		List<int> newScores = new List<int>();
-
+		private List<Student> addStudentList;
+			private String newName;
+			private List<int> newScores;
+			
+		/* Default Initializer */
 		public frmNewStudent()
 		{
 			InitializeComponent();
 		}
 
-		public frmNewStudent(List<Student> mainStudentList)
+		/* Overloaded Initializer */
+		public frmNewStudent(List<Student> allStudents)
 		{
-			newStudentList = mainStudentList;
+			addStudentList = allStudents;
 			InitializeComponent();
 		}
 
+		/* OK Button */
 		private void btnOK_Click(object sender, EventArgs e)
 		{
 			if (newScores.Count >= 1)
@@ -42,6 +46,7 @@ namespace Maintain_Student_Scores
 			}
 		}
 
+		/* Add Score Button */
 		private void btnAddScore_Click(object sender, EventArgs e)
 		{
 			try
@@ -64,19 +69,22 @@ namespace Maintain_Student_Scores
 				MessageBox.Show("Please enter a valid number", "Invalid Entry");
 			}
 
-			String printList = null;
-			foreach (Int32 x in newScores)
-			{
-				printList += x.ToString() + ", ";
-			}
+			printList(newScores);
 
 			txtScores.Text = printList;
 		}
 
+		/* Clear Scores Button */
 		private void btnClearScores_Click(object sender, EventArgs e)
 		{
 			newScores.Clear();
 			txtScores.Text = null;
+		}
+
+		/* Cancel Button */
+		private void btnCancel_Click(object sender, EventArgs e)
+		{
+			this.Close();
 		}
 	}
 }

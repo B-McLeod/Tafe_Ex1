@@ -182,6 +182,7 @@
 			this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Student Scores";
+			this.Activated += new System.EventHandler(this.frmStudentScores_Activated);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
