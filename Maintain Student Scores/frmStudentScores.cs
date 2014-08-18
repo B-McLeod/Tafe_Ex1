@@ -43,19 +43,24 @@ namespace Maintain_Student_Scores
 		{
 			// Get selected Student
 			int index = this.lstMain.SelectedIndex;
-			if (index >= 1)
+			if (index != -1)
 			{
 				tempStudent = allStudents[index] as Student;
+
+				// Pass student to dialog box
+				Form updateScoresForm = new frmUpdateScores(tempStudent);
+				updateScoresForm.ShowDialog();
 			}
-			// Pass student to dialog box
-			Form updateScoresForm = new frmUpdateScores(tempStudent, this);
-			updateScoresForm.ShowDialog();	
 		}
 
 		/* Update listbox when screen is activated */
 		private void frmStudentScores_Activated(object sender, EventArgs e)
 		{
-			UpdateList();
+			this.lstMain.Items.Clear(); // Clear listbox
+			foreach (Student s in allStudents) // Rebuild listbox
+			{
+				this.lstMain.Items.Add(s.displayStudent());
+			}
 		}
 
 		/* Delete Button */
@@ -100,16 +105,6 @@ namespace Maintain_Student_Scores
 			return studentList;
 		}
 
-		/* Update List */
-		public void UpdateList()
-		{
-			this.lstMain.Items.Clear();
-			foreach (Student s in allStudents)
-			{
-				this.lstMain.Items.Add(s.printStudent());
-			}
-		}
-
 		/* Display Total, Count and Average Scores */
 		private void lstMain_SelectedIndexChanged(object sender, EventArgs e)
 		{
@@ -117,9 +112,9 @@ namespace Maintain_Student_Scores
 			i = this.lstMain.SelectedIndex;
 			tempStudent = allStudents[i] as Student;
 
-			this.txtTotal.Text = tempStudent.totalScore().ToString();
-			this.txtCount.Text = tempStudent.countScores().ToString();
-			this.txtAverage.Text = tempStudent.averageScore().ToString();
+			this.txtTotal.Text = tempStudent.getTotal().ToString();
+			this.txtCount.Text = tempStudent.getCount().ToString();
+			this.txtAverage.Text = tempStudent.getAverage().ToString();
 		}
 	}
 }

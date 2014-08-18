@@ -65,7 +65,7 @@ namespace Maintain_Student_Scores
 		}
 
 		/* Student.ToString */
-		public String printStudent()
+		public String displayStudent()
 		{
 			String strStudent = null;
 			String x = getName();
@@ -81,7 +81,7 @@ namespace Maintain_Student_Scores
 		}
 
 		/* Total Score */
-		public int totalScore()
+		public int getTotal()
 		{
 			int total = 0;
 			foreach(int i in Scores)
@@ -92,18 +92,18 @@ namespace Maintain_Student_Scores
 		}
 
 		/* Count Score */
-		public int countScores()
+		public int getCount()
 		{
 			return Scores.ToArray().Length;
 		}
 
 		/* Average Score */
-		public double averageScore()
+		public double getAverage()
 		{
 			int tempTotal;
 			int tempCount;
-			tempTotal = totalScore();
-			tempCount = countScores();
+			tempTotal = getTotal();
+			tempCount = getCount();
 			if (tempCount != 0)
 			{
 				return (tempTotal / tempCount);

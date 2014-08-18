@@ -31,7 +31,7 @@
 			this.btnAdd = new System.Windows.Forms.Button();
 			this.btnCancel = new System.Windows.Forms.Button();
 			this.lblScore = new System.Windows.Forms.Label();
-			this.textBox1 = new System.Windows.Forms.TextBox();
+			this.txtScoreAdd = new System.Windows.Forms.TextBox();
 			this.SuspendLayout();
 			// 
 			// btnAdd
@@ -43,6 +43,7 @@
 			this.btnAdd.TabIndex = 0;
 			this.btnAdd.Text = "Add";
 			this.btnAdd.UseVisualStyleBackColor = true;
+			this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
 			// 
 			// btnCancel
 			// 
@@ -54,6 +55,7 @@
 			this.btnCancel.TabIndex = 1;
 			this.btnCancel.Text = "Cancel";
 			this.btnCancel.UseVisualStyleBackColor = true;
+			this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
 			// 
 			// lblScore
 			// 
@@ -65,12 +67,12 @@
 			this.lblScore.Text = "Score:";
 			this.lblScore.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
 			// 
-			// textBox1
+			// txtScoreAdd
 			// 
-			this.textBox1.Location = new System.Drawing.Point(75, 15);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(100, 20);
-			this.textBox1.TabIndex = 3;
+			this.txtScoreAdd.Location = new System.Drawing.Point(75, 15);
+			this.txtScoreAdd.Name = "txtScoreAdd";
+			this.txtScoreAdd.Size = new System.Drawing.Size(100, 20);
+			this.txtScoreAdd.TabIndex = 3;
 			// 
 			// frmAddScore
 			// 
@@ -79,7 +81,7 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.btnCancel;
 			this.ClientSize = new System.Drawing.Size(209, 87);
-			this.Controls.Add(this.textBox1);
+			this.Controls.Add(this.txtScoreAdd);
 			this.Controls.Add(this.lblScore);
 			this.Controls.Add(this.btnCancel);
 			this.Controls.Add(this.btnAdd);
@@ -99,6 +101,6 @@
 		private System.Windows.Forms.Button btnAdd;
 		private System.Windows.Forms.Button btnCancel;
 		private System.Windows.Forms.Label lblScore;
-		private System.Windows.Forms.TextBox textBox1;
+		private System.Windows.Forms.TextBox txtScoreAdd;
 	}
 }

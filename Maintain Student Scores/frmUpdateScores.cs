@@ -1,36 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Collections.Generic;
 
 namespace Maintain_Student_Scores
 {
 	public partial class frmUpdateScores : Form
 	{
 		/* Variables */
-		private frmStudentScores mainForm;
-		//private List<Student> studentList;
 		private Student tempStudent;
-
-		/* Default Initializer */
-		public frmUpdateScores()
-		{
-			InitializeComponent();
-		}
+		private List<int> originalList;
 
 		/* Overloaded Initializer */
-		public frmUpdateScores(Student temp, frmStudentScores callingForm)
+		public frmUpdateScores(Student inStudent)
 		{
-			this.tempStudent = temp;
-			mainForm = callingForm;
+			this.tempStudent = inStudent; // Set Student
+			originalList = tempStudent.getScores(); // Save original imported list
 			InitializeComponent();
 
-			// Populate text box and list
+			// Populate name textbox and score list
 			txtName.Text = tempStudent.getName();
 			foreach (int score in tempStudent.getScores())
 			{
@@ -38,28 +25,31 @@ namespace Maintain_Student_Scores
 			}
 		}
 
-		/* Set student to update */
-		public void setStudent(Student selectedStudent)
+		/* Cancel Button */
+		private void btnCancel_Click(object sender, EventArgs e)
 		{
-			this.tempStudent = selectedStudent;
+			this.lstScores.Items.Clear(); // Clear list
+
+			// Set student scores back to original list
+			tempStudent.setScores(originalList);
 		}
 
 		/* Add Button */
 		private void btnAdd_Click(object sender, EventArgs e)
 		{
-			Form formAddScore = new frmAddScore();
+			Form formAddScore = new frmAddScore(tempStudent.getScores());
 			formAddScore.ShowDialog();
 		}
 
 		/* Update Button */
 		private void btnUpdate_Click(object sender, EventArgs e)
 		{
-			int i = this.lstScores.SelectedIndex;
-			if (i != -1)
+			int index = this.lstScores.SelectedIndex;
+			if (index != -1)
 			{
-				Form formUpdateScore = new frmUpdateScore();
+				Form formUpdateScore = new frmUpdateScore(tempStudent.getScores(), index);
 				formUpdateScore.ShowDialog();
-			}			
+			}
 		}
 
 		/* OK Button */
@@ -67,9 +57,6 @@ namespace Maintain_Student_Scores
 		{
 			if (tempStudent.getScores().Count > 0)
 			{
-				Student newStudent = new Student(txtName.Text, tempStudent.getScores());
-				//studentList.Add(newStudent);
-				mainForm.Update();
 				this.Close();
 			}
 			else
@@ -78,10 +65,32 @@ namespace Maintain_Student_Scores
 			}
 		}
 
+		/* Clear Scores Button */
 		private void btnClear_Click(object sender, EventArgs e)
 		{
 			tempStudent.getScores().Clear();
 			lstScores.Items.Clear();
+		}
+
+		/* Update list when window activated */
+		private void frmUpdateScores_Activated(object sender, EventArgs e)
+		{
+			this.lstScores.Items.Clear();
+			foreach (int x in tempStudent.getScores())
+			{
+				this.lstScores.Items.Add(x);
+			}
+		}
+
+		/* Remove Button */
+		private void btnRemove_Click(object sender, EventArgs e)
+		{
+			if (this.lstScores.SelectedIndex != -1)
+			{
+				int i = this.lstScores.SelectedIndex;
+				this.lstScores.Items.RemoveAt(i);
+				tempStudent.getScores().RemoveAt(i);
+			}
 		}
 	}
 }

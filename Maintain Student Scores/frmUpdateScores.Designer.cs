@@ -102,6 +102,7 @@
 			this.btnRemove.TabIndex = 6;
 			this.btnRemove.Text = "Remove";
 			this.btnRemove.UseVisualStyleBackColor = true;
+			this.btnRemove.Click += new System.EventHandler(this.btnRemove_Click);
 			// 
 			// btnClear
 			// 
@@ -132,6 +133,7 @@
 			this.btnCancel.TabIndex = 9;
 			this.btnCancel.Text = "Cancel";
 			this.btnCancel.UseVisualStyleBackColor = true;
+			this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
 			// 
 			// frmUpdateScores
 			// 
@@ -154,6 +156,7 @@
 			this.Name = "frmUpdateScores";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Update Student Scores";
+			this.Activated += new System.EventHandler(this.frmUpdateScores_Activated);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
