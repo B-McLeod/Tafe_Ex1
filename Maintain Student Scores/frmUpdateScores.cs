@@ -26,12 +26,16 @@ namespace Maintain_Student_Scores
 		/* Overloaded Initializer */
 		public frmUpdateScores(Student temp, frmStudentScores callingForm)
 		{
-			//studentList = allStudents;
 			this.tempStudent = temp;
 			mainForm = callingForm;
 			InitializeComponent();
 
+			// Populate text box and list
 			txtName.Text = tempStudent.getName();
+			foreach (int score in tempStudent.getScores())
+			{
+				this.lstScores.Items.Add(score);
+			}
 		}
 
 		/* Set student to update */
@@ -72,6 +76,12 @@ namespace Maintain_Student_Scores
 			{
 				MessageBox.Show("No scores have been entered for this student", "Enter score");
 			}
+		}
+
+		private void btnClear_Click(object sender, EventArgs e)
+		{
+			tempStudent.getScores().Clear();
+			lstScores.Items.Clear();
 		}
 	}
 }

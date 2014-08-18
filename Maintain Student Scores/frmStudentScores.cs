@@ -43,8 +43,10 @@ namespace Maintain_Student_Scores
 		{
 			// Get selected Student
 			int index = this.lstMain.SelectedIndex;
-			tempStudent = allStudents[index] as Student;
-
+			if (index >= 1)
+			{
+				tempStudent = allStudents[index] as Student;
+			}
 			// Pass student to dialog box
 			Form updateScoresForm = new frmUpdateScores(tempStudent, this);
 			updateScoresForm.ShowDialog();	
