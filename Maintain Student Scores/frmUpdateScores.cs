@@ -87,9 +87,9 @@ namespace Maintain_Student_Scores
 		{
 			if (this.lstScores.SelectedIndex != -1)
 			{
-				int i = this.lstScores.SelectedIndex;
-				this.lstScores.Items.RemoveAt(i);
-				tempStudent.getScores().RemoveAt(i);
+				int i = this.lstScores.SelectedIndex;	// Get selected index
+				this.lstScores.Items.RemoveAt(i);		// Remove from listbox
+				tempStudent.getScores().RemoveAt(i);	// Remove from student scorelist
 			}
 		}
 	}
