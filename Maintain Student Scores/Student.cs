@@ -80,23 +80,38 @@ namespace Maintain_Student_Scores
 			return strStudent;
 		}
 
-		/* -- Score Methods -- */
-
 		/* Total Score */
-		private int totalScore(List<int> lstScr)
+		public int totalScore()
 		{
 			int total = 0;
-
-			foreach(int i in lstScr)
+			foreach(int i in Scores)
 			{
 				total += i;
 			}
-
 			return total;
 		}
 
 		/* Count Score */
+		public int countScores()
+		{
+			return Scores.ToArray().Length;
+		}
 
 		/* Average Score */
+		public double averageScore()
+		{
+			int tempTotal;
+			int tempCount;
+			tempTotal = totalScore();
+			tempCount = countScores();
+			if (tempCount != 0)
+			{
+				return (tempTotal / tempCount);
+			}
+			else
+			{
+				return 0;
+			}
+		}
 	}
 }

@@ -7,32 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Collections;
 
 namespace Maintain_Student_Scores
 {
 	public partial class frmStudentScores : Form
 	{
+		/* Variables */
 		private List<Student> allStudents;
+		private Student tempStudent;
 
 		/* Default Initializer */
 		public frmStudentScores()
 		{
 			InitializeComponent();
 			allStudents = new List<Student>();
-		}
-				
-		/* Open 'New Student' dialog box */
-		private void btnAddNew_Click(object sender, EventArgs e)
-		{
-			Form formNewStudent = new frmNewStudent(allStudents);
-			formNewStudent.ShowDialog();
-		}
-
-		/* Open 'Update Student Score' dialog box */
-		private void btnUpdate_Click(object sender, EventArgs e)
-		{
-			Form formUpdateScores = new frmUpdateScores();
-			formUpdateScores.ShowDialog();
+			allStudents = testStudentList();
 		}
 
 		/* Close the application */
@@ -40,24 +30,51 @@ namespace Maintain_Student_Scores
 		{
 			Application.Exit();
 		}
+				
+		/* Open 'New Student' dialog box */
+		private void btnAddNew_Click(object sender, EventArgs e)
+		{
+			Form newStudentForm = new frmNewStudent(allStudents, this);
+			newStudentForm.ShowDialog();
+		}
+
+		/* Open 'Update Student Score' dialog box */
+		private void btnUpdate_Click(object sender, EventArgs e)
+		{
+			// Get selected Student
+			int index = this.lstMain.SelectedIndex;
+			tempStudent = allStudents[index] as Student;
+
+			// Pass student to dialog box
+			Form updateScoresForm = new frmUpdateScores(tempStudent, this);
+			updateScoresForm.ShowDialog();	
+		}
 
 		/* Update listbox when screen is activated */
 		private void frmStudentScores_Activated(object sender, EventArgs e)
 		{
-			allStudents = testStudentList();
-			this.lstMain.Items.Clear();
-			foreach (Student s in allStudents)
-			{
-				this.lstMain.Items.Add(s.printStudent());
-			}
+			UpdateList();
 		}
 
+		/* Delete Button */
+		private void btnDelete_Click(object sender, EventArgs e)
+		{
+			if (this.lstMain.SelectedIndex != -1)
+			{
+				int i = this.lstMain.SelectedIndex;
+				this.lstMain.Items.RemoveAt(i);
+				allStudents.RemoveAt(i);
+			}
+		}
+		
+		/* ---- Helper Methods ---- */
+		
 		/* Test Data */
 		private List<Student> testStudentList()
 		{
 			List<Student> studentList = new List<Student>();
 
-			// Student - Robin Williams (Rest in peace)
+			// Student - Robin Williams
 			Student CaptainMyCaptain = new Student();
 			CaptainMyCaptain.setName("Robin Williams");
 			List<int> student1scores = new List<int> { 100, 100, 100 };
@@ -74,20 +91,33 @@ namespace Maintain_Student_Scores
 			// Student - Blake McLeod
 			Student student3 = new Student();
 			student3.setName("Blake McLeod");
-			List<int> student3scores = new List<int> { 87, 96, 98 };
+			List<int> student3scores = new List<int> { 94, 96, 98 };
 			student3.setScores(student3scores);
 			studentList.Add(student3);
-			
+
 			return studentList;
 		}
 
-		private void lstMain_SelectedIndexChanged(object sender, EventArgs e)
+		/* Update List */
+		public void UpdateList()
 		{
-			// WORKING ON GETTING THE TOTAL, COUNT AND AVERAGE VALUES TO DISPLAY WHEN SELECTED LIST ITEM HAS CHANGED.
+			this.lstMain.Items.Clear();
+			foreach (Student s in allStudents)
+			{
+				this.lstMain.Items.Add(s.printStudent());
+			}
 		}
 
+		/* Display Total, Count and Average Scores */
+		private void lstMain_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			int i;
+			i = this.lstMain.SelectedIndex;
+			tempStudent = allStudents[i] as Student;
 
-
-
+			this.txtTotal.Text = tempStudent.totalScore().ToString();
+			this.txtCount.Text = tempStudent.countScores().ToString();
+			this.txtAverage.Text = tempStudent.averageScore().ToString();
+		}
 	}
 }

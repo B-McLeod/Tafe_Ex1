@@ -15,6 +15,7 @@ namespace Maintain_Student_Scores
 	{
 		private List<Student> studentList;
 		private List<int> newStudentScores = new List<int>();
+		private frmStudentScores mainForm;
 			
 		/* Default Initializer */
 		public frmNewStudent()
@@ -22,10 +23,11 @@ namespace Maintain_Student_Scores
 			InitializeComponent();
 		}
 
-		///* Overloaded Initializer */
-		public frmNewStudent(List<Student> allStudents)
+		/* Overloaded Initializer */
+		public frmNewStudent(List<Student> allStudents, frmStudentScores callingForm)
 		{
 			studentList = allStudents;
+			mainForm = callingForm;
 			InitializeComponent();
 		}
 
@@ -36,6 +38,7 @@ namespace Maintain_Student_Scores
 			{
 				Student newStudent = new Student(txtName.Text, newStudentScores);
 				studentList.Add(newStudent);
+				mainForm.Update();
 				this.Close();
 			}
 			else
@@ -85,6 +88,7 @@ namespace Maintain_Student_Scores
 		{
 			this.Close();
 		}
+
 
 		/* ---- Helper Methods ---- */
 
