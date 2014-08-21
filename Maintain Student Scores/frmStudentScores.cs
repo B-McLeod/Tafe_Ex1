@@ -1,13 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Collections;
 
 namespace Maintain_Student_Scores
 {
@@ -18,6 +11,7 @@ namespace Maintain_Student_Scores
 		private Student tempStudent;
 
 		/* Default Initializer */
+
 		public frmStudentScores()
 		{
 			InitializeComponent();
@@ -26,19 +20,22 @@ namespace Maintain_Student_Scores
 		}
 
 		/* Close the application */
+
 		private void btnExit_Click(object sender, EventArgs e)
 		{
 			Application.Exit();
 		}
-				
+
 		/* Open 'New Student' dialog box */
+
 		private void btnAddNew_Click(object sender, EventArgs e)
 		{
-			Form newStudentForm = new frmNewStudent(allStudents, this);
+			Form newStudentForm = new frmNewStudent(allStudents);
 			newStudentForm.ShowDialog();
 		}
 
 		/* Open 'Update Student Score' dialog box */
+
 		private void btnUpdate_Click(object sender, EventArgs e)
 		{
 			// Get selected Student
@@ -54,29 +51,29 @@ namespace Maintain_Student_Scores
 		}
 
 		/* Update listbox when screen is activated */
+
 		private void frmStudentScores_Activated(object sender, EventArgs e)
 		{
-			this.lstMain.Items.Clear(); // Clear listbox
-			foreach (Student s in allStudents) // Rebuild listbox
-			{
-				this.lstMain.Items.Add(s.displayStudent());
-			}
+			rebuildList();
 		}
 
 		/* Delete Button */
+
 		private void btnDelete_Click(object sender, EventArgs e)
 		{
-			if (this.lstMain.SelectedIndex != -1)
+			if (this.lstMain.SelectedIndex >= 0)
 			{
 				int i = this.lstMain.SelectedIndex;
 				this.lstMain.Items.RemoveAt(i);
 				allStudents.RemoveAt(i);
+				rebuildList();
 			}
 		}
-		
+
 		/* ---- Helper Methods ---- */
-		
+
 		/* Test Data */
+
 		private List<Student> testStudentList()
 		{
 			List<Student> studentList = new List<Student>();
@@ -105,16 +102,42 @@ namespace Maintain_Student_Scores
 			return studentList;
 		}
 
-		/* Display Total, Count and Average Scores */
+		/* Display Total, Count and Average Scores
+		 * Clear text boxes if no selection is made */
+
 		private void lstMain_SelectedIndexChanged(object sender, EventArgs e)
 		{
-			int i;
-			i = this.lstMain.SelectedIndex;
-			tempStudent = allStudents[i] as Student;
+			if (lstMain.SelectedIndex >= 0)
+			{
+				int i = this.lstMain.SelectedIndex;
+				if (i >= 0)
+				{
+					tempStudent = allStudents[i] as Student;
 
-			this.txtTotal.Text = tempStudent.getTotal().ToString();
-			this.txtCount.Text = tempStudent.getCount().ToString();
-			this.txtAverage.Text = tempStudent.getAverage().ToString();
+					this.txtTotal.Text = tempStudent.getTotal().ToString();
+					this.txtCount.Text = tempStudent.getCount().ToString();
+					this.txtAverage.Text = tempStudent.getAverage().ToString();
+				}
+			}
+			else
+			{
+				tempStudent = null;
+				this.txtTotal.Text = "";
+				this.txtCount.Text = "";
+				this.txtAverage.Text = "";
+			}
+		}
+
+		/* Rebuild the list */
+
+		private void rebuildList()
+		{
+			this.lstMain.Items.Clear(); // Clear listbox
+			foreach (Student s in allStudents) // Rebuild listbox
+			{
+				this.lstMain.Items.Add(s.displayStudent());
+			}
+			lblStudentCount.Text = "Students: " + lstMain.Items.Count.ToString();
 		}
 	}
 }

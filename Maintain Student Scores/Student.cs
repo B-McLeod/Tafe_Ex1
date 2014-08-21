@@ -44,39 +44,22 @@ namespace Maintain_Student_Scores
 		{
 			this.Scores = Scores;
 		}
-		
-		public Student getStudent()
-		{
-			return this;
-		}
 
 		/* ---- Helper Methods ---- */
-
-		/* List.ToString */
-		public String printList(List<int> list)
-		{
-			String strList = null;
-			foreach (int s in list)
-			{
-				strList += s + ", ";
-			}
-			strList = strList.Remove(strList.Length - 2);
-			return strList;			
-		}
 
 		/* Student.ToString */
 		public String displayStudent()
 		{
 			String strStudent = null;
-			String x = getName();
-			String y = null;
+			String strName = getName();
+			String strScore = null;
 
 			foreach (int i in Scores)
 			{
-				y += ", " + i;
+				strScore += ", " + i;
 			}
 
-			strStudent = x + " - " + y.Remove(0, 2);
+			strStudent = strName + " - " + strScore.Remove(0, 2);
 			return strStudent;
 		}
 

@@ -1,44 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Maintain_Student_Scores
 {
-	public partial class 
+	public partial class
 		frmNewStudent : Form
 	{
 		private List<Student> studentList;
 		private List<int> newStudentScores = new List<int>();
 		private frmStudentScores mainForm;
-			
+
 		/* Default Initializer */
+
 		public frmNewStudent()
 		{
 			InitializeComponent();
 		}
 
-		/* Overloaded Initializer */
-		public frmNewStudent(List<Student> allStudents, frmStudentScores callingForm)
+		/* Overloaded Initializer
+		 * Import: Student list and Main Form */
+
+		public frmNewStudent(List<Student> allStudents)
 		{
 			studentList = allStudents;
-			mainForm = callingForm;
 			InitializeComponent();
 		}
 
 		/* OK Button */
+
 		private void btnOK_Click(object sender, EventArgs e)
 		{
 			if (newStudentScores.Count > 0)
 			{
 				Student newStudent = new Student(txtName.Text, newStudentScores);
 				studentList.Add(newStudent);
-				mainForm.Update();
 				this.Close();
 			}
 			else
@@ -48,6 +44,7 @@ namespace Maintain_Student_Scores
 		}
 
 		/* Add Score Button */
+
 		private void btnAddScore_Click(object sender, EventArgs e)
 		{
 			try
@@ -77,6 +74,7 @@ namespace Maintain_Student_Scores
 		}
 
 		/* Clear Scores Button */
+
 		private void btnClearScores_Click(object sender, EventArgs e)
 		{
 			newStudentScores.Clear();
@@ -84,21 +82,23 @@ namespace Maintain_Student_Scores
 		}
 
 		/* Cancel Button */
+
 		private void btnCancel_Click(object sender, EventArgs e)
 		{
 			this.Close();
 		}
 
-
 		/* ---- Helper Methods ---- */
 
 		/* Score Validation Methods */
+
 		private bool validScore(int s)
 		{
 			return (s >= 0 && s <= 100);
 		}
 
 		/* List.ToString */
+
 		public String printList(List<int> list)
 		{
 			String strList = null;

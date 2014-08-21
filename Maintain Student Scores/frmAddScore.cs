@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Maintain_Student_Scores
@@ -17,29 +11,34 @@ namespace Maintain_Student_Scores
 		private List<int> scoreList;
 
 		/* Default Initializer */
+
 		public frmAddScore()
 		{
 			InitializeComponent();
 			txtScoreAdd.Focus();
 		}
 
-		/* Overloaded Initializer */
-		public frmAddScore(List<int> list)
+		/* Overloaded Initializer
+		 * Import: Score List(List<int>) */
+
+		public frmAddScore(List<int> inList)
 		{
-			scoreList = list;
+			scoreList = inList;
 			InitializeComponent();
 			txtScoreAdd.Focus();
 		}
 
 		/* Cancel */
+
 		private void btnCancel_Click(object sender, EventArgs e)
 		{
 			this.Close();
 		}
 
+		/* Add Button */
+
 		private void btnAdd_Click(object sender, EventArgs e)
 		{
-			
 			try
 			{
 				addScore = Convert.ToInt32(txtScoreAdd.Text);
@@ -57,7 +56,6 @@ namespace Maintain_Student_Scores
 			{
 				MessageBox.Show("Enter a valid number!", "Error");
 			}
-
 		}
 	}
 }

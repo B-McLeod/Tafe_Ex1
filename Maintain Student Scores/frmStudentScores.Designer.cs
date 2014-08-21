@@ -40,6 +40,7 @@
 			this.txtCount = new System.Windows.Forms.TextBox();
 			this.lblAverage = new System.Windows.Forms.Label();
 			this.txtAverage = new System.Windows.Forms.TextBox();
+			this.lblStudentCount = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// btnExit
@@ -159,6 +160,14 @@
 			this.txtAverage.TabIndex = 0;
 			this.txtAverage.TabStop = false;
 			// 
+			// lblStudentCount
+			// 
+			this.lblStudentCount.AutoSize = true;
+			this.lblStudentCount.Location = new System.Drawing.Point(17, 175);
+			this.lblStudentCount.Name = "lblStudentCount";
+			this.lblStudentCount.Size = new System.Drawing.Size(0, 13);
+			this.lblStudentCount.TabIndex = 6;
+			// 
 			// frmStudentScores
 			// 
 			this.AcceptButton = this.btnAddNew;
@@ -166,6 +175,7 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.CancelButton = this.btnExit;
 			this.ClientSize = new System.Drawing.Size(359, 262);
+			this.Controls.Add(this.lblStudentCount);
 			this.Controls.Add(this.lblAverage);
 			this.Controls.Add(this.txtAverage);
 			this.Controls.Add(this.lblCount);
@@ -204,6 +214,7 @@
 		private System.Windows.Forms.TextBox txtCount;
 		private System.Windows.Forms.Label lblAverage;
 		private System.Windows.Forms.TextBox txtAverage;
+		private System.Windows.Forms.Label lblStudentCount;
 	}
 }
 
