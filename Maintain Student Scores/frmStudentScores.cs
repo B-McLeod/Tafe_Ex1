@@ -11,7 +11,6 @@ namespace Maintain_Student_Scores
 		private Student tempStudent;
 
 		/* Default Initializer */
-
 		public frmStudentScores()
 		{
 			InitializeComponent();
@@ -20,14 +19,12 @@ namespace Maintain_Student_Scores
 		}
 
 		/* Close the application */
-
 		private void btnExit_Click(object sender, EventArgs e)
 		{
 			Application.Exit();
 		}
 
 		/* Open 'New Student' dialog box */
-
 		private void btnAddNew_Click(object sender, EventArgs e)
 		{
 			Form newStudentForm = new frmNewStudent(allStudents);
@@ -35,7 +32,6 @@ namespace Maintain_Student_Scores
 		}
 
 		/* Open 'Update Student Score' dialog box */
-
 		private void btnUpdate_Click(object sender, EventArgs e)
 		{
 			// Get selected Student
@@ -51,14 +47,12 @@ namespace Maintain_Student_Scores
 		}
 
 		/* Update listbox when screen is activated */
-
 		private void frmStudentScores_Activated(object sender, EventArgs e)
 		{
 			rebuildList();
 		}
 
 		/* Delete Button */
-
 		private void btnDelete_Click(object sender, EventArgs e)
 		{
 			if (this.lstMain.SelectedIndex >= 0)
@@ -73,7 +67,6 @@ namespace Maintain_Student_Scores
 		/* ---- Helper Methods ---- */
 
 		/* Test Data */
-
 		private List<Student> testStudentList()
 		{
 			List<Student> studentList = new List<Student>();
@@ -104,7 +97,6 @@ namespace Maintain_Student_Scores
 
 		/* Display Total, Count and Average Scores
 		 * Clear text boxes if no selection is made */
-
 		private void lstMain_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			if (lstMain.SelectedIndex >= 0)
@@ -129,7 +121,6 @@ namespace Maintain_Student_Scores
 		}
 
 		/* Rebuild the list */
-
 		private void rebuildList()
 		{
 			this.lstMain.Items.Clear(); // Clear listbox
